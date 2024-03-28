@@ -17,7 +17,7 @@ model_kwargs:
    use_classification_head: True
 head: 'deeplab'
 freeze_layer: 'none'
-pretraining: /path/to/unsupervised_model.pth.tar # Change this.
+pretraining: 'C:\Users\giles\Github\Unsupervised-Semantic-Segmentation\RESULTS\VOCSegmentation_supervised_saliency_model\checkpoint.pth.tar' #/path/to/unsupervised_model.pth.tar # Change this.
 kmeans_eval: True
 
 retrieval_kwargs:

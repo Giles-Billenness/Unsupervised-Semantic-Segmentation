@@ -10,7 +10,7 @@ import glob
 import tarfile
 import numpy as np
 import torch.utils.data as data
-
+sys.path.append('pretrain')
 from data.util.mypath import Path
 from data.util.google_drive import download_file_from_google_drive
 from utils.utils import mkdir_if_missing

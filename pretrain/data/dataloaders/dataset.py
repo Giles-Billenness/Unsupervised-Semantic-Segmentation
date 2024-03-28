@@ -79,7 +79,7 @@ class DatasetKeyQuery(data.Dataset):
     def __getitem__(self, index):
         sample_ = self.base_dataset.__getitem__(index)
         count = 0
-        
+
         while True:
             if count > 1: # Warning
                 #warnings.warn('Need to re-apply transform for image {}'.format(sample['meta']['image']))
@@ -89,10 +89,10 @@ class DatasetKeyQuery(data.Dataset):
                 #warnings.warn('Try loading a different image. Failed to load {}'.format(sample['meta']['image']))
                 sample_ = self.base_dataset.__getitem__(random.randint(0, self.__len__()-1))
                 count = 100
- 
+
             key_sample = self.transform(deepcopy(sample_))
             query_sample = self.transform(deepcopy(sample_))
-                           
+
             if self.downsample_sal: # Downsample
                 key_sample['sal'] = interpolate(key_sample['sal'][None,None,:,:].float(),
                                             scale_factor=self.scale_factor_sal, mode='nearest').squeeze().long()
@@ -100,7 +100,7 @@ class DatasetKeyQuery(data.Dataset):
                                             scale_factor=self.scale_factor_sal, mode='nearest').squeeze().long()
             key_area = key_sample['sal'].float().sum() / key_sample['sal'].numel()
             query_area = query_sample['sal'].float().sum() / query_sample['sal'].numel()
-            
+
             if key_area < self.max_area and key_area > self.min_area and query_area < self.max_area and query_area > self.min_area: # Ok. Foreground/Background has proper ratio.
                 return {'key': key_sample, 'query': query_sample}
 

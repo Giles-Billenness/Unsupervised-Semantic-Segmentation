@@ -24,7 +24,7 @@ head: deeplab
 freeze_layers: True 
 
 # Optimizer
-epochs: 40
+epochs: 1 #40
 optimizer: sgd
 optimizer_kwargs:
    lr: 0.004

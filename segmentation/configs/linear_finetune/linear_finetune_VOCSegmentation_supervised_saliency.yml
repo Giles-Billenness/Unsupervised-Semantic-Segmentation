@@ -13,10 +13,10 @@ backbone: 'resnet50'
 backbone_kwargs:
    dilated: True
 head: 'deeplab'
-pretraining: /path/to/checkpoint.pth.tar # Change this.
+pretraining: 'C:\Users\giles\Github\Unsupervised-Semantic-Segmentation\RESULTS\VOCSegmentation_supervised_saliency_model\checkpoint.pth.tar' #/path/to/checkpoint.pth.tar # Change this.
 
 # Optimizer
-epochs: 60
+epochs: 2 #60
 scheduler: step
 scheduler_kwargs:
    lr_decay_rate: 0.1

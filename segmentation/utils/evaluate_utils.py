@@ -114,14 +114,13 @@ def save_results_to_disk(p, val_loader, model, crf_postprocess=False):
             if crf_postprocess:
                 probs = dense_crf(meta['image_file'][jj], output[jj])
                 pred = np.argmax(probs, axis=0).astype(np.uint8)
-            
+
             # Regular
             else:
                 pred = torch.argmax(output[jj], dim=0).cpu().numpy().astype(np.uint8)
-
-            result = cv2.resize(pred, dsize=(meta['im_size'][1][jj], meta['im_size'][0][jj]), 
+            result = cv2.resize(pred, dsize=(int(meta['im_size'][1][jj]), int(meta['im_size'][0][jj])),
                                         interpolation=cv2.INTER_NEAREST)
             imageio.imwrite(os.path.join(p['save_dir'], meta['image'][jj] + '.png'), result)
-   
+
         if counter % 250 == 0:
             print('Saving results: {} of {} objects'.format(counter, len(val_loader.dataset)))

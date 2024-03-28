@@ -1,0 +1,11 @@
+#pretain/DATSET
+
+pretrain/DATASET/*
+RESULTS/*
+pretrain\DATASET\*
+
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class

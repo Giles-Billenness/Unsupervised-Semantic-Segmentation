@@ -13,7 +13,7 @@ train_batch_size: 128
 backbone: resnet50
 backbone_kwargs:
    dilated: True
-   pretraining: imagenet_moco 
+   pretraining: imagenet_moco
    moco_state_dict: /path/to/moco_v2_800ep_pretrain.pth.tar # see MoCo repo
 model_kwargs:
    ndim: 32
@@ -24,7 +24,7 @@ head: deeplab
 freeze_layers: False
 
 # Optimizer
-epochs: 40
+epochs: 1 #40
 optimizer: sgd
 optimizer_kwargs:
    lr: 0.004
